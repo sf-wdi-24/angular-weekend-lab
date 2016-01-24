@@ -2,6 +2,7 @@
 var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
+    env = require('dotenv').load(),
     mongoose = require('mongoose');
 //config body parser to retrieve form data
 app.use(bodyParser.urlencoded({extended: true}));
@@ -14,6 +15,8 @@ app.set('view engine', 'hbs');
 mongoose.connect('mongodb://localhost/ng-soundcloud');
 //require music model
 // var Track = require('./models/track');
+//env key
+var soundClient = process.env.client_key;
 
 
 //API ROUTES//

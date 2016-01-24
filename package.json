@@ -18,6 +18,7 @@
   "homepage": "https://github.com/alanlee35/angular-weekend-lab#readme",
   "dependencies": {
     "body-parser": "^1.14.2",
+    "dotenv": "^2.0.0",
     "express": "^4.13.4",
     "hbs": "^4.0.0",
     "mongoose": "^4.3.7"
