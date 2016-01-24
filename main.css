@@ -1,5 +1,5 @@
 #logo {
-	margin-top: 70px;
+	margin-top: 40px;
 }
 
 .main-nav {
@@ -37,5 +37,10 @@ p {
 }
 
 #first_name, #last_name, #email {
-	color: #f4b5ef;
+	color: #a5199a;
+}
+
+p#info {
+	font-size: 20px; 
+	width: 500px;
 }
