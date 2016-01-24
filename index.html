@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="juntosApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+
+  <!-- materialize css -->
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+  <!-- angular -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+
+  <!-- ngRoute -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
+  <!-- angular resource -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+
+  <!-- custom script (angular app) -->
+  <script type="text/javascript" src="app.js"></script>
+
+  <!-- firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+  <title>Juntos</title>
+</head>
+<body>
+<div id="main-container">
+  <div align="center">
+    <div id="logo">
+    <a href="#!" class="brand-logo"><img src="images/logo.png"></a>
+    </div>
+  <div class="main-nav" data-content-field="navigation">
+    <ul> 
+      <li class="page-collection">
+        <a href="events.html">Events</a>
+      </li>
+      <li class="page-collection">
+        <a href="mentors.html">Mentors</a>
+      </li>
+      <li class="page-collection">
+        <a href="mentees.html">Mentees</a>
+      </li>      
+    </ul>
+  </div>
+  <div class="group_pic">
+  <img src="images/group_pic.png">
+  </div>
+
+<div class="info">
+  <p>
+</div>
+<div class="get-involved">
+  <p class="form-title" align="center">Get Involved!</p>
+   <div class="row">
+      <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="First Name" id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>
