@@ -16,35 +16,59 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'hbs');
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/(XXXXXXXXXXXXXXX)');
+mongoose.connect('mongodb://localhost/angular-weekend-lab');
+
+//require schema
+var Item = require("./models/item");
 
 // listen on port 3000
 app.listen(3000, function() {
   console.log('server started');
 });
 
-// routes
+
+app.get('/api/items', function (req, res) {
+	items = Item.find(function(err, items){
+		res.json(items);
+	});	
+});
+
+app.post('/api/items', function (req, res) {
+	var item = new Item({
+		name: req.body.name,
+		category: req.body.category,
+		image: req.body.image
+		});
+	item.save(function(err, savedItem){
+		res.json(savedItem);	
+	});
+});
+
+app.get('/api/items/:id', function (req, res) {
+	itemId = req.params.id;
+	Item.find({_id:itemId}, function(err, item){
+		res.json(item);
+	});
+});
+
+app.delete('/api/items/:id', function (req, res) {
+	itemId = req.params.id;
+	Item.remove({_id:itemId}, function(err, item){
+		res.json(item);
+	});
+});
+
+app.put('/api/items/:id', function (req, res) {
+	itemId = req.params.id;
+	Item.update({_id:itemId}, req.body, function(err, editedIitem){
+		Item.find({_id:itemId}, function(err, item){
+			res.json(item);
+		});
+	});
+});
+
+
+// general routes
 app.get('*', function (req, res) {
   res.render('index');
-});
-
-
-app.get('/api/todos', function (req, res) {
-
-});
-
-app.post('/api/todos', function (req, res) {
-
-});
-
-app.get('/api/todos/:id', function (req, res) {
-
-});
-
-app.put('/api/todos/:id', function (req, res) {
-
-});
-
-app.delete('/api/todos/:id', function (req, res) {
-	
 });
