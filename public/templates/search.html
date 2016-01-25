@@ -15,15 +15,21 @@
 </div>
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-		<h4 class="page-header">Your search of <span class="bold">{{ data.Info[0].Name }}</span> resulted in the following results</h4>
+		<h4 class="page-header" ng-show="searchResults">Your search of <span class="bold">{{ data.Info[0].Name }}</span> resulted in {{data.Results.length }} results</h4>
 	</div>
-	<div class="col-md-8 col-md-offset-2" ng-repeat="result in data.Results">
-		<p>{{ result.Name }} -- {{ result.Type }}</p>
-		<p>{{ result.wTeaser }}</p>
-		<p>{{ result.wUrl }}</p>
-		<p>{{ result.yUrl }}</p>
-		<p>{{ result.yID }}</p>
-		<hr>
+	<div ng-repeat="type in mediaType">
+		<div class="col-md-8 col-md-offset-2">
+		<h1 class="page-header">{{ type }}</h1>
+			<div ng-repeat="result in data.Results | filter: result.Type ">
+				<div class="mediaType" ng-if="result.Type == type">
+					<p>{{ result.Name }} -- {{ result.Type }}</p>
+					<p class="description">{{ result.wTeaser }}</p>
+					<p>Wikipedia Page:<a href="{{ result.wUrl }}">{{result.Name}}</a></p>
+					<br>
+					<a href="{{result.yUrl}}">YouTube Video</a>
+					<hr>	
+				</div>
+			</div>
+		</div>	
 	</div>
 </div>
-

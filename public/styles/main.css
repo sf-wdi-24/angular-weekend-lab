@@ -2,3 +2,9 @@
 	font-weight: bold;
 	font-style: italic;
 }
+
+.description {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

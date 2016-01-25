@@ -6,9 +6,9 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
 			templateUrl: 'templates/search.html',
 			controller: 'SearchCtrl'
 		})
-		.when('/favorites', {
-			templateUrl: 'templates/favorites.html',
-			controller: 'FavoriesCtrl'
+		.when('/suggestion', {
+			templateUrl: 'templates/suggestion.html',
+			controller: 'SuggestionCtrl'
 		});
 		$locationProvider
 			.html5Mode({
@@ -97,7 +97,7 @@ var data = {
             },
             {
                 "Name": "Chevelle ",
-                "Type": "music",
+                "Type": "movies",
                 "wTeaser": "Chevelle is an American rock band that formed in 1995 in the Chicago suburb of Grayslake, Illinois. The band was originally composed of brothers: Pete Loeffler (lead vocals and guitar), Sam Loeffler (drums and percussion) and Joe Loeffler (bass and backing vocals). When Joe left the band in 2005, Geno Lenardo subbed-in as the bassist until he was replaced by Pete and Sam's brother-in-law, Dean Bernardini.Chevelle has sold over four million albums in the United States. The band's first studio album, Point #1, was released on a small record label called Squint Entertainment. Chevelle's second album, Wonder What's Next (October 8, 2002), was certified Platinum by the RIAA after a debut at No. 14 on the United States albums chart, Billboard 200. This Type of Thinking (Could Do Us In) (September 21, 2004), the band's third album debuted at No. 8 and has been certified Gold. Chevelle has since released a fourth album, Vena Sera (April 3, 2007), a fifth album, Sci-Fi Crimes, (August 31, 2009), and a sixth album Hats Off to the Bull (December 6, 2011). Their seventh and most recent album, La Gárgola, was released on April 1, 2014. Other releases from Chevelle include two live albums, DVDs and a compilation of band favorites.",
                 "wUrl": "http://en.wikipedia.org/wiki/Chevelle_(band)",
                 "yUrl": "https://www.youtube-nocookie.com/embed/d6rkuzgoSd8",
@@ -169,7 +169,7 @@ var data = {
             },
             {
                 "Name": "Soundgarden",
-                "Type": "music",
+                "Type": "photos",
                 "wTeaser": "Soundgarden is an American rock band formed in Seattle, Washington, in 1984 by singer and rhythm guitarist Chris Cornell, lead guitarist Kim Thayil, and bassist Hiro Yamamoto. Matt Cameron became the band's full-time drummer in 1986, while bassist Ben Shepherd became a permanent replacement for Yamamoto in 1990.Soundgarden was one of the seminal bands in the creation of grunge, a style of alternative rock that developed in Seattle, and was one of a number of grunge bands signed to the record label Sub Pop. Soundgarden was the first grunge band to sign to a major label (A&M Records, in 1988), though the band did not achieve commercial success until they popularized the genre in the early 1990s with Seattle contemporaries Pearl Jam, Nirvana, and Alice in Chains.",
                 "wUrl": "http://en.wikipedia.org/wiki/Soundgarden",
                 "yUrl": "https://www.youtube-nocookie.com/embed/3mbBbFH9fAg",
@@ -177,7 +177,7 @@ var data = {
             },
             {
                 "Name": "Jimmy Eat World",
-                "Type": "music",
+                "Type": "images",
                 "wTeaser": "Jimmy Eat World is an American rock band from Mesa, Arizona, that formed in 1993. The band is composed of lead vocalist and guitarist Jim Adkins, guitarist and backing vocalist Tom Linton, bassist Rick Burch and drummer Zach Lind. As of June 2013, Jimmy Eat World have released eight studio albums, the last seven featuring the current lineup.The four piece's commercial breakthrough came with the successful release of several singles from the album Bleed American (2001). Four singles from the album charted within the top twenty positions of the Hot Modern Rock Tracks chart, with \"The Middle\" reaching the number one position. Jimmy Eat World's follow-up album Futures (2004) featured another Modern Rock Tracks number one song, \"Pain\". The RIAA certified Bleed American platinum and Futures gold, rewarding the two albums for selling over one and a half million records between them. The band's sixth album Chase This Light (2007) became the band's highest charting album, peaking at number five on the Billboard 200.",
                 "wUrl": "http://en.wikipedia.org/wiki/Jimmy_Eat_World",
                 "yUrl": "https://www.youtube-nocookie.com/embed/oKsxPW6i3pM",
@@ -185,7 +185,7 @@ var data = {
             },
             {
                 "Name": "Pepper",
-                "Type": "music",
+                "Type": "movies",
                 "wTeaser": "Pepper is a three piece rock band originally from Hawaii, now based in San Diego. The band consists of vocalist/guitarist Kaleo Wassman, vocalist/bassist Bret Bollinger, and drummer Yesod Williams. Since the band's formation they have released five studio albums as well as one live album. They are currently managed by David \"Beno\" Benveniste's Velvet Hammer Music and Management Group.Pepper formed in 1996 with singer/guitarist Kaleo Wassman and bassist/singer Bret Bollinger, who had been friends since middle school. The duo was influenced by the Hawaiian artist Three Plus and popular mainland groups like Sublime. The group struggled to find a drummer to be in the band, with Wassman stating \" we were going through drummers like a bottomless pit.\" Wassman and Bollinger heard about a drummer named Yesod Williams who had gained success around their small town, and later met Williams at a party. The two convinced Williams to join the band, and with the trio in place, Pepper left Hawaii for San Diego and went on to open shows by Burning Spear, Shaggy, and other major reggae artists. Pepper first entered the studio in 1997 and recorded a seven-song demo.",
                 "wUrl": "http://en.wikipedia.org/wiki/Stitches_EP",
                 "yUrl": "https://www.youtube-nocookie.com/embed/S8aPq67wGUM",
@@ -199,19 +199,25 @@ var data = {
 app.controller('SearchCtrl', ['$scope', '$http', function ($scope, $http) {
 	$scope.search = "Search controller connected";
 	//fake test data
-	$scope.data = data.Similar;
+	// $scope.data = data.Similar;
+	// $scope.mediaType = ($scope.data.Results).map(function(result) { return result.Type; });
+	// $scope.mediaType = $scope.mediaType.filter(function(v,i) { return $scope.mediaType.indexOf(v) == i; });
+	//end test data
 	$scope.searchMediaKid = function() {
 		var mediaQuery = $scope.searchTerm;
 		$scope.searchResults = true;
-		// var url = 'https://www.tastekid.com/api/similar?info=1&k=197890-mediacza-EWRGAOVO&q=incubus&callback=JSON_CALLBACK';
-		// $http.jsonp(url)
-		// .then(function (response) {
-		// 	$scope.data = response.data.Similar;
-		// 	$scope.searchResults = true;
-		// }, 
-		// function(error) {
-		// 	console.error(error);
-		// });
+		var url = 'https://www.tastekid.com/api/similar?info=1&k=197890-mediacza-EWRGAOVO&q=' + mediaQuery + '&callback=JSON_CALLBACK';
+		$http.jsonp(url)
+		.then(function (response) {
+			$scope.data = response.data.Similar;
+			console.log($scope.data);
+			$scope.mediaType = ($scope.data.Results).map(function(result) { return result.Type; });
+			$scope.mediaType = $scope.mediaType.filter(function(v,i) { return $scope.mediaType.indexOf(v) == i; });
+			$scope.searchResults = true;
+		}, 
+		function(error) {
+			console.error(error);
+		});
 	};
 	$scope.newSearch = function() {
 		$scope.searchTerm = null;
@@ -219,7 +225,9 @@ app.controller('SearchCtrl', ['$scope', '$http', function ($scope, $http) {
 	};
 }]);
 
-
+app.controller('SuggestionCtrl', ['$scope', function ($scope) {
+	
+}]);
 
 
 
