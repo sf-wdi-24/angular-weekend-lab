@@ -1,0 +1,17 @@
+Welcome, choose your chuck norris personality.
+
+<form>
+	<div class="radio">
+            <label>
+                <input type="radio" name="category" value="nerdy" ng-model="category">
+                Nerdy
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="category" value="explicit" ng-model="category">
+                Explicit
+            </label>
+        </div>
+	<input type="submit" ng-click="catSubmit(category)">
+</form>
