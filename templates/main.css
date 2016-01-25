@@ -56,3 +56,8 @@ body {
 	margin-top: 350px;
 	margin-bottom: 10px;
 }
+
+.glyphicon {
+	margin-right: 5px;
+	color: #b30000;
+}

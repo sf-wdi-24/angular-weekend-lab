@@ -1,0 +1,9 @@
+<div class="row" id="nav">
+Pick a <a ng-href="/">personality</a>
+</div>
+<div class="col-sm-6 col-sm-offset-2">
+<h1>Favorites</h1>
+	<div class="jokes-row" ng-repeat="fave in favorites.results" >
+		<ul><span class="glyphicon glyphicon-heart"></span>{{fave.joke}}</ul>
+	</div>
+</div>

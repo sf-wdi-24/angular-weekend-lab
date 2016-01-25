@@ -1,10 +1,13 @@
 var app = angular.module('chuckNorrisJokes', ['ngRoute', 'ngResource']);
+
+// Initial variable setting
 var category = 'nerdy';
 var parseRequestHeaders = {
   'X-Parse-Application-Id': 'kEMaSLjFadCnoIPKC6nAwEcfqOXqxyborhGJLE7V',
   'X-Parse-REST-API-Key': 'iQtlHG3KCr6JvOY9LRX8XWqi8vyHCUDfYFhg0Ggt'
 };
 
+// Service for shared property of category (for joke api query)
 app.service('sharedProperties', function () {
     return {
         getProperty: function () {
@@ -16,6 +19,7 @@ app.service('sharedProperties', function () {
     };
 });
 
+// Joke api query
 app.factory('J', ['$http', function ($http) {
   var baseUrl = "http://api.icndb.com/jokes/random/15?limitTo=";
   return {
@@ -25,6 +29,7 @@ app.factory('J', ['$http', function ($http) {
   };
 }]);
 
+// Parse api
 app.factory('Favorite', ['$resource', function ($resource) {
   return $resource('https://api.parse.com/1/classes/Favorite/:favoriteId', { favoriteId: '@favoriteId' },
     {
@@ -40,6 +45,7 @@ app.factory('Favorite', ['$resource', function ($resource) {
     });
 }]);
 
+// Routes
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
   $routeProvider
     .when('/', {
@@ -49,6 +55,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     .when('/jokes', {
       templateUrl: 'templates/jokes.html',
       controller: 'JokesCtrl'
+    })
+    .when('/favorites', {
+      templateUrl: 'templates/favorites.html',
+      controller: 'FavoritesCtrl'
     });
 
   $locationProvider.html5Mode({
@@ -57,6 +67,7 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
   });
 }]);
 
+// Welcome (choose personality) controller
 app.controller('WelcomeCtrl', ['$scope', 'sharedProperties', 'J', '$location', function ($scope, sharedProperties, J, $location) {
   $scope.catSubmit = function() {
     sharedProperties.setProperty($scope.category);
@@ -64,15 +75,19 @@ app.controller('WelcomeCtrl', ['$scope', 'sharedProperties', 'J', '$location', f
   };
 }]);
 
+// Jokes controller
 app.controller('JokesCtrl', ['$scope', 'sharedProperties', 'J', 'Favorite', function ($scope, sharedProperties, J, Favorite) {
   $scope.jokesResults = J.query(sharedProperties.getProperty());
   $scope.category = sharedProperties.getProperty();
+  
+  // Swap image on joke page depending on personality chosen
   if($scope.category == 'explicit'){
     $scope.url = 'http://www.writecamp.org/writecamp//files/copy_images/Vd3MJo.jpg';
   } else {
     $scope.url = 'http://leveleleven.com/wp-content/uploads/2014/05/Chuck5.png';
   }
 
+  // Save joke to parse db
   $scope.favorite = function (favorite_joke) {
     
     var faveData = {
@@ -89,6 +104,11 @@ app.controller('JokesCtrl', ['$scope', 'sharedProperties', 'J', 'Favorite', func
 
   };
   
+}]);
+
+// Favorites controller
+app.controller('FavoritesCtrl', ['$scope', 'Favorite', function ($scope, Favorite) {
+  $scope.favorites = Favorite.query();
 }]);
 
 
