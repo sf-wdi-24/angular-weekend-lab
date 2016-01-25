@@ -1,10 +1,5 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
-      <div ng-bind-html></div>
-    </div>
-  </div>
-  <div class="row">
     <div class="col-md-4 col-md-offset-4">
       <h1 class="text-center">Search soundCloud</h1>
       <form>
@@ -21,6 +16,12 @@
       <br>
       <img src="http://i.imgur.com/zfp8irQ.jpg" ng-if="!songs.artwork_url" alt="" class="img-responsive">
       <img src="{{songs.artwork_url}}" ng-click="play(songs.permalink_url)" ng-if="songs.artwork_url" alt="" class="img-responsive">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div ng-bind-html="iFrame">
     </div>
   </div>
 </div>
