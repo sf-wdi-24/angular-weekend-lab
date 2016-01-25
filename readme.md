@@ -1,3 +1,13 @@
+# Found in SF
+--
+
+## How it works
+* Move the marker on the map to guess where the image was taken
+* Click "Guess!" to find out where the picture was taken
+
+![](homepage.png)
+
+--
 # <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Angular Weekend Lab
 
 ![house](https://cloud.githubusercontent.com/assets/7833470/12465814/e9ae781e-bf84-11e5-8de0-6a1d952e5fda.gif)
