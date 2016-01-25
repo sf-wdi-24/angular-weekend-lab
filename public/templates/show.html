@@ -1,10 +1,13 @@
 <div class="row">
-	<div class="col-md-8  col-md-offset-2">
-		<h1 class="page-header">{{ item.name }}<span class="pull-right"><small>{{ item.type }}</small></span></h1>
-		<div>
-			<p>{{ item.wikiDesc }}</p>
-			<p><a href="{{ item.wikiUrl }}">See more</a></p>
-			<iframe ng-src="{{ video }}" id="video"></iframe>
+	<div class="col-md-8 col-md-offset-2">
+		<div class="row">
+			<div class="well mediaType col-md-12">
+				<a href="/suggestion" class="buttons btn pull-right">Back to your saved items</a>
+				<h1 class="page-header">{{ item.name }}</h1>
+				<p>{{ item.wikiDesc }}</p>
+				<p><a href="{{ item.wikiUrl }}" target="_blank">See more</a></p>
+				<iframe ng-if="item.youtubeUrl" ng-src="{{ video }}" id="video"></iframe>
+			</div>
 		</div>
 	</div>
 </div>

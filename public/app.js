@@ -67,6 +67,7 @@ app.controller('SearchCtrl', ['$scope', '$http', 'Media', function ($scope, $htt
 	$scope.newSearch = function() {
 		$scope.searchTerm = null;
 		$scope.searchResults = false;
+		$scope.searchResults = false;
 	};
 
 	$scope.saveMedia = function(result) {
@@ -80,14 +81,19 @@ app.controller('SearchCtrl', ['$scope', '$http', 'Media', function ($scope, $htt
 		};
 		Media.save(suggestion, function (data) {
 			objectId = data.objectId;
+			$scope.addedSuggestion = true;
 		});
 	};
+
 }]);
 
 app.controller('SuggestionCtrl', ['$scope', '$http', 'Media', function ($scope, $http, Media) {
 	// Get saved suggestions
 	Media.query(function(data) {
 		$scope.suggestions = data;
+		$scope.mediaType = ($scope.suggestions).map(function(result) { return result.type; });		
+		$scope.mediaType = $scope.mediaType.filter(function(v,i) { return $scope.mediaType.indexOf(v) == i; });
+		console.log($scope.mediaType);
 	});
 }]);
 
