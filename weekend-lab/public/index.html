@@ -45,9 +45,10 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="/signup" ng-hide="$root.currentUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-          <li><a href="/login" ng-hide="$root.currentUser"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
-          <li><a href="#" ng-show="$root.currentUser" ng-click="$root.logOut()"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
+          <li><a href="/signup" ng-hide="currentUser"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href="/login" ng-hide="currentUser"><span class="glyphicon glyphicon-log-in" ></span> Login</a></li>
+          <li><a href="/profile" ng-show="currentUser">Profile</a></li>
+          <li><a href="#" ng-show="currentUser" ng-click="$root.logOut()"><span class="glyphicon glyphicon-log-out" ></span> Logout</a></li>
         </ul>
       </div>
     </div>

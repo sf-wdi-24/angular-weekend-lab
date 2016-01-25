@@ -1,24 +1,29 @@
 Parse.initialize("Dq1BPYiJrrzEFRky4HVeldBCJH1hPECni1TGiNyp", "YRIVVcA5YxqGrrl3rF6PniDcYwvD6RzgG34h8VPS");
 
+var parseRequestHeaders = {
+  'X-Parse-Application-Id': 'Dq1BPYiJrrzEFRky4HVeldBCJH1hPECni1TGiNyp',
+  'X-Parse-REST-API-Key': 'sR0yiSRXpQZfy70TM3816kzvfpAM0a004Ugm6xiJ'
+};
+
 var app = angular.module('selfieApp', ['ngRoute', 'ngResource']);
 
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider)  {
   $routeProvider
     .when('/', {
-      templateUrl: 'templates/selfies/index.html',
-      controller: 'SelfiesIndexCtrl'
+      templateUrl: 'templates/photos/index.html',
+      controller: 'PhotosIndexCtrl'
     })
     .when('/login', {
-      templateUrl: 'templates/selfies/login.html',
+      templateUrl: 'templates/photos/login.html',
       controller: 'LoginCtrl'
     })
     .when('/signup', {
-      templateUrl: 'templates/selfies/signup.html',
+      templateUrl: 'templates/photos/signup.html',
       controller: 'SignupCtrl'
     })
-    .when('/selfies/:id', {
-      templateUrl: 'templates/selfies/show.html',
-      controller: 'SelfiesShowCtrl'
+    .when('/profile', {
+      templateUrl: 'templates/photos/profile.html',
+      controller: 'ProfileCtrl'
     });
   $locationProvider
     .html5Mode({
@@ -27,8 +32,20 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $lo
     });
 }]);
 
-app.controller('SelfiesIndexCtrl', ['$scope', '$location', function ($scope, $location) {
-  $scope.testing = "index";
+app.factory('Photo', ['$resource', function ($resource) {
+  return $resource('https://api.parse.com/1/classes/Photo/:photoId', { photoId: '@photoId' },
+    {
+      query: {
+        method: 'GET',
+        isArray: false,
+        headers: parseRequestHeaders
+      },
+      save: {
+        method: 'POST',
+        headers: parseRequestHeaders
+      }
+    });
+
 }]);
 
 app.controller('SignupCtrl', ['$rootScope', '$scope', '$location', function ($rootScope, $scope, $location) {
@@ -56,7 +73,7 @@ app.controller('SignupCtrl', ['$rootScope', '$scope', '$location', function ($ro
   $rootScope.logOut = function(form) {
     Parse.User.logOut();
     $rootScope.currentUser = null;
-    $location.path('/signup');
+    $location.path('/login');
   };
 }]);
 
@@ -76,8 +93,45 @@ app.controller('LoginCtrl', ['$rootScope', '$scope', '$location', function ($roo
   };
 }]);
 
-app.controller('SelfiesShowCtrl', ['$scope', function ($scope) {
-  $scope.testing = "show";
+app.controller('PhotosIndexCtrl', ['$rootScope', '$scope', '$http', 'Photo', function ($rootScope, $scope, $http, Photo) {
+  $scope.photos = [];
+
+  $scope.searchTag = function () {
+    // remove space
+    var tag = $scope.tag.replace(/\s+/g, '');
+    var url = 'https://api.instagram.com/v1/tags/' + tag + '/media/recent?client_id=d8d0d6b44249490bbde6eee4d1968dac&callback=JSON_CALLBACK';
+    
+    $http.jsonp(url)
+      .then(function (response) {
+        // success callback
+        $scope.tag = '';
+        $scope.photos = response.data.data;
+      }, function (error) {
+        // error callback
+      });
+  };
+
+  if ($rootScope.currentUser) {
+    $scope.savePhoto = function (photo) {
+      photo.favorited = true;
+      
+      var photoData = {
+        url: photo.images.standard_resolution.url,
+        user: photo.user.username,
+        likes: photo.likes.count
+      };
+
+      Photo.save(photoData, function (data) {
+        // success callback
+      }, function (error) {
+        // error callback
+      });
+    };
+  }
+}]);
+
+app.controller('ProfileCtrl', ['$scope', '$location', function ($scope, $location) {
+  $scope.testing = "Profile";
 }]);
 
 
