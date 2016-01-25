@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2 type-group">
+		<h1 class="page-header site-header">Things you saved</h1>
+		<div ng-repeat="types in mediaType">
+			<div class="type-group">
+				<h1 class="page-header">{{ types | uppercase }}
+					<button class="btn buttons pull-right" ng-click="showTypes = !showTypes" ng-hide="showTypes">See all</button>
+					<button class="btn buttons pull-right" ng-click="showTypes = !showTypes" ng-show="showTypes">See less</button>
+				</h1>
+				<div ng-repeat="suggestion in suggestions | filter: suggestion.type ">
+					<div class="well mediaType" ng-if="suggestion.type == types" ng-show="showTypes">
+						<h2 class="page-header">
+							<a href="/suggestion/{{ suggestion.objectId }}">{{ suggestion.name }}</a>
+							<button ng-click="showBelow = !showBelow" ng-show="showBelow" class="btn buttons glyphicon glyphicon-menu-up"></button>
+							<button ng-click="showBelow = !showBelow" ng-hide="showBelow" class="btn buttons glyphicon glyphicon-menu-down"></button>
+							<span class="pull-right">{{ suggestion.type | uppercase }}</span>
+						</h2>
+						<div ng-show="showBelow">
+							<p>{{ suggestion.wikiDesc }}</p>
+							<p><a href="{{ suggestion.wikiUrl }}" target="_blank">See more on Wikipedia</a></p>
+							<hr>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

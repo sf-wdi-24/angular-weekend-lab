@@ -1,0 +1,10 @@
+{
+  "applications": {
+    "_default": {
+      "link": "mediaCzar"
+    },
+    "mediaCzar": {
+      "applicationId": "ggWoGq1JoG7MpTGtuMuP0MKUGwkmKTfhN8jLr7QI"
+    }
+  }
+}

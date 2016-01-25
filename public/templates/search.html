@@ -1,0 +1,37 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+		<h1 class="site-header"><strong>Media Czar</strong></h1>
+		<form ng-submit="searchMediaKid()" ng-hide="searchResults">
+			<div class="form-group">
+				<label for="search">Find something new</label>
+				<input class="form-control" type="text" id="search" ng-model="searchTerm" placeholder="Movies, music, games, books, TV shows ..." autofocus>
+			</div>
+			<div class="form-group">
+				<input class="buttons btn form-control" type="submit" value="Search">
+			</div>
+		</form>
+		<button class="buttons btn form-control" ng-click="newSearch()" ng-show="searchResults">New Search</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8 col-md-offset-2" ng-show="searchResults">
+		<h4 class="page-header">Your search of <span class="bold">{{ data.Info[0].Name }}</span> resulted in {{data.Results.length }} results</h4>
+		<h4 class="pull-right">Click <span class="glyphicon glyphicon-pushpin"></span> to save for later</h4>
+	</div>
+	<div ng-repeat="type in mediaType" ng-show="searchResults">
+		<div class="type-group col-md-8 col-md-offset-2">
+		<h1 class="page-header">{{ type | uppercase }} <button class="btn buttons pull-right" ng-click="clickType = !clickType">Expand Selection</button></h1>
+			<div ng-show="clickType" ng-repeat="result in data.Results | filter: result.Type ">
+				<div class="well mediaType" ng-if="result.Type == type">
+					<h2 class="page-header">{{ result.Name }}
+						<button ng-click="saveMedia(result)" class=" buttons btn glyphicon glyphicon-pushpin"></button>
+						<span class="pull-right">{{ result.Type | uppercase }}</span>
+					</h2>
+					<p class="description">{{ result.wTeaser }}</p>
+					<p><a href="{{ result.wUrl }}" target="_blank">See more about {{result.Name}} on Wikipedia</a></p>
+					<hr>	
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>
