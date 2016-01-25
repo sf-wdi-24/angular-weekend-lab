@@ -20,14 +20,15 @@
 	</div>
 	<div ng-repeat="type in mediaType" ng-show="searchResults">
 		<div class="type-group col-md-8 col-md-offset-2">
-		<h1 class="page-header">{{ type | uppercase }}</h1>
-			<div ng-repeat="result in data.Results | filter: result.Type ">
+		<h1 class="page-header">{{ type | uppercase }} <button class="btn buttons pull-right" ng-click="clickType = !clickType">Expand Selection</button></h1>
+			<div ng-show="clickType" ng-repeat="result in data.Results | filter: result.Type ">
 				<div class="well mediaType" ng-if="result.Type == type">
-					<h2 class="page-header">{{ result.Name }} <span class="pull-right">{{ result.Type | uppercase }}</span></h2>
+					<h2 class="page-header">{{ result.Name }}
+						<button ng-click="saveMedia(result)" class=" buttons btn glyphicon glyphicon-pushpin"></button>
+						<span class="pull-right">{{ result.Type | uppercase }}</span>
+					</h2>
 					<p class="description">{{ result.wTeaser }}</p>
 					<p><a href="{{ result.wUrl }}" target="_blank">See more about {{result.Name}} on Wikipedia</a></p>
-					<br>
-					<a href="#" ng-click="saveMedia(result)" class="glyphicon glyphicon-pushpin"></a>
 					<hr>	
 				</div>
 			</div>
