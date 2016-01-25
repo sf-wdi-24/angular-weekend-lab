@@ -1,1 +1,14 @@
 <h1>Welcome {{currentUser.get('username')}}</h1>
+<div class="row">
+  <div class="col-md-3 col-sm-4" ng-repeat="photo in favorites">
+    <div class="thumbnail">
+      <img ng-src="{{photo.url}}">
+      <br>
+      <p>@{{photo.user.username}}</p>
+      <p>
+        <i class="fa" ng-class="{'fa-thumbs-up': photo.likes.count > 0, 'fa-thumbs-o-up': photo.likes.count === 0}"></i>
+        <ng-pluralize count="{{photo.likes.count}}" when="{'1': '1 like', 'other': '{} likes'}"></ng-pluralize>
+      </p>
+    </div>
+  </div>
+</div>

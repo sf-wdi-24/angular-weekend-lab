@@ -118,7 +118,8 @@ app.controller('PhotosIndexCtrl', ['$rootScope', '$scope', '$http', 'Photo', fun
       var photoData = {
         url: photo.images.standard_resolution.url,
         user: photo.user.username,
-        likes: photo.likes.count
+        likes: photo.likes.count,
+        createdBy: Parse.User.current()
       };
 
       Photo.save(photoData, function (data) {
@@ -130,8 +131,19 @@ app.controller('PhotosIndexCtrl', ['$rootScope', '$scope', '$http', 'Photo', fun
   }
 }]);
 
-app.controller('ProfileCtrl', ['$scope', '$location', function ($scope, $location) {
-  $scope.testing = "Profile";
+app.controller('ProfileCtrl', ['$scope','$rootScope', function ($scope, $rootScope) {
+  $scope.favorites = [];
+  var query = new Parse.Query("Photo");
+  query.equalTo("createdBy", $rootScope.currentUser, {
+    success: function (data) {
+      console.log(data);
+      $scope.favorites = data.results;
+    },
+    error: function (data, error) {
+      console.log(error.message);
+    }
+  });
+  console.log(query);
 }]);
 
 
