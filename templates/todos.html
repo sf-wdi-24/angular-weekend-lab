@@ -1,0 +1,17 @@
+<h1>Todos!</h1>
+<div class="row">
+	<div class="col-md-8">
+		<form name="form" ng-submit="addTodo(todo)" >
+			<input type="text" name="newTodo" ng-model="newTodo" required>
+			<button ng-disable="form.$invalid">Go</button>
+		</form>
+		<button ng-click="clearCompleted()">Done!</button>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-8">
+		<ul>
+			<li></li>
+		</ul>
+	</div>
+</div>
