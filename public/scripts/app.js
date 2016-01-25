@@ -33,6 +33,7 @@ app.controller('HomeCtrl', ['$scope', function($scope) {
 
 app.controller('GameCtrl', ['$scope', 'GameData', function($scope, GameData) {
     $scope.loaded = false;
+    $scope.gameDone = false;
     $scope.gameData = {};
     GameData.query().success(function(gameData) {
         console.log("query success", gameData);
@@ -74,12 +75,18 @@ app.controller('GameCtrl', ['$scope', 'GameData', function($scope, GameData) {
         guessLat = args.model.lat;
         guessLng = args.model.lng;
     });
+
+    $scope.reload = function() {
+      console.log("clicked");
+      location.reload();
+    };
     $scope.guess = function() {
       console.log("guessed", guessLat, guessLng);
       var imageLat = $scope.gameData.latitude;
       var imageLng = $scope.gameData.longitude;
 
       console.log("image location", imageLat, imageLng);
+      $scope.gameDone = true;
       $scope.markers.Image = {
         lat: imageLat,
         lng: imageLng,
