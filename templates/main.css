@@ -40,6 +40,7 @@ body {
 
 .jokes-row {
 	text-align: left;
+	display: inline;
 }
 
 #chuck-icon {

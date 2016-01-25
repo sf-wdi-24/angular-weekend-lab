@@ -6,7 +6,7 @@ Pick different <a ng-href="/">personality</a>
 	<h2>{{category | uppercase}} Chuck Norris</h2>
 	<img src="{{url}}" class="img-rounded" id="jokes-pic"><br><br>
 	<div class="jokes-row" ng-repeat="joke in jokesResults['$$state']['value']['data']['value']" >
-		<ul><img src="https://d1eipm3vz40hy0.cloudfront.net/images/p-apps-marketplace/apps/37796/logo.png" id="chuck-icon">{{joke.joke}}</ul><br>
+		<ul><div class="saveJoke" ng-click="favorite(joke)"><img src="https://d1eipm3vz40hy0.cloudfront.net/images/p-apps-marketplace/apps/37796/logo.png" id="chuck-icon"></div>{{joke.joke}}</ul><br>
 	</div>
 </div>
 
