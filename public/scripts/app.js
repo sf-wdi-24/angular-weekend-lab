@@ -76,6 +76,8 @@ app.controller('ShowCtrl', ['$scope', '$routeParams', '$location','$http', funct
 			 $scope.singleItem.splice(0,1);
 			 console.log(data);
 			 $scope.singleItem.push(data.data[0]);
+			 $scope.itemEdit = {};
+			 $scope.formShow = true;
 		}, function(error){
 			console.error(error);
 		});

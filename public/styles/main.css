@@ -1,0 +1,19 @@
+.mainThumbnail{
+	width: 200px;
+	height: 200px;
+	padding: 2%;
+	margin: 2%;
+}
+
+.showThumbnail{
+	width: 50%;
+	height: 500px;
+	margin-top: 4%;
+	padding: 5%;	
+}
+
+img{
+	margin: 5%;
+	width:33%;
+	height: 33%
+}

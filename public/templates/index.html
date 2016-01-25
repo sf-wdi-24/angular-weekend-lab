@@ -21,12 +21,12 @@
 	</div>
 </div>
 <div class="row">
-	<div ng-repeat = "item in items">
-		<div class="col-md-3 thumbnail">
-			<p>{{item.name}}</p>
-			<p>{{item.category}}</p>
-			<p>{{item.favorite}}</p>
-			<img src="{{items.image}}">
+	<div ng-repeat = "item in items" class="">
+		<div class="col-md-3 thumbnail mainThumbnail">
+			<p>Item: {{item.name}}</p>
+			<p>Category: {{item.category}}</p>
+			<img src="{{item.image}}" alt=""></p>
+			<img ng-src=="{{items.image}}">
 			<a ng-href="/items/{{item._id}}">Check it out!</a>
 		</div>
 	</div>
