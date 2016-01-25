@@ -1,0 +1,19 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div ng-hide="loaded">
+				Loading...
+			</div>
+			<div ng-show="loaded">
+				<img class="img-responsive" src="{{ gameData.url }}" style="max-height: 370px">
+			</div>
+		</div>
+		<div class="col-md-6">
+			<leaflet markers="markers" center="center" event-broadcast="events" width="100%" height="370px"></leaflet>
+			
+		</div>
+	</div>
+	<div class="row">
+		<button class="btn btn-default btn-lg" ng-click="guess()">Guess!</button>
+	</div>
+</div>
