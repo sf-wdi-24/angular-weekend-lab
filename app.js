@@ -1,4 +1,4 @@
-var app = angular.module('rescueTimeApp', ['ngRoute', 'ngResource']);
+var app = angular.module('chuckNorrisJokes', ['ngRoute', 'ngResource']);
 var category = 'nerdy';
 
 app.service('sharedProperties', function () {
@@ -48,4 +48,12 @@ app.controller('WelcomeCtrl', ['$scope', 'sharedProperties', 'RT', '$location', 
 app.controller('JokesCtrl', ['$scope', 'sharedProperties', 'RT', function ($scope, sharedProperties, RT) {
   $scope.jokesResults = RT.query(sharedProperties.getProperty());
   $scope.category = sharedProperties.getProperty();
+  if($scope.category == 'explicit'){
+    $scope.url = 'http://www.writecamp.org/writecamp//files/copy_images/Vd3MJo.jpg';
+  } else {
+    $scope.url = 'http://leveleleven.com/wp-content/uploads/2014/05/Chuck5.png';
+  }
+  
 }]);
+
+

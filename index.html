@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="rescueTimeApp">
+<html lang="en" ng-app="chuckNorrisJokes">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -20,7 +20,9 @@
   <!-- custom script (angular app) -->
   <script type="text/javascript" src="app.js"></script>
 
-  <title>Rescue Time App</title>
+  <link rel="stylesheet" type="text/css" href="/templates/main.css">
+
+  <title>Chuck Norris Personality Jokes</title>
 </head>
 <body>
   <div class="container">
@@ -31,4 +33,12 @@
     </div>
   </div>
 </body>
+<footer>
+  <div class="col-sm-11" id="chuck-links">
+    <a ng-href="http://www.icndb.com/api/" target="_blank">Chuck Norris API</a> / 
+    <a ng-href="http://www.imdb.com/name/nm0001569/" target="_blank">Chuck Norris IMDB</a> / 
+    <a ng-href="http://www.chucknorrisfacts.com/" target="_blank">Chuck Norris Facts</a> / 
+    <a ng-href="https://en.wikipedia.org/wiki/Chuck_Norris" target="_blank">Chuck Norris Wikipedia</a>
+  </div>
+</footer>
 </html>

@@ -1,7 +1,15 @@
-Back to <a ng-href="/">Welcome</a>
-<br><br>
-{{category | uppercase}} Chuck Norris
+<div class="row" id="nav">
+Pick different <a ng-href="/">personality</a>
+</div>
 
-<div class="row" ng-repeat="joke in jokesResults['$$state']['value']['data']['value']" >
-{{joke.joke}}
+<div class="col-sm-5 col-sm-offset-3" id="jokes-body">
+	<h2>{{category | uppercase}} Chuck Norris</h2>
+	<img src="{{url}}" class="img-rounded" id="jokes-pic"><br><br>
+	<div class="jokes-row" ng-repeat="joke in jokesResults['$$state']['value']['data']['value']" >
+		<ul><img src="https://d1eipm3vz40hy0.cloudfront.net/images/p-apps-marketplace/apps/37796/logo.png" id="chuck-icon">{{joke.joke}}</ul><br>
+	</div>
+</div>
+
+<div class="jokes-gif">
+	<img src="https://usatlife.files.wordpress.com/2014/06/the-best-dodgeball-quotes-gifs-and-shops-632617.gif">
 </div>
