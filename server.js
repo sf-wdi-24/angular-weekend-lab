@@ -8,7 +8,7 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 //use static files from public folder
-app.use(express.static(_dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 //set view engine to handlebars
 app.set('view engine', 'hbs');
 //connect to mongodb

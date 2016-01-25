@@ -21,8 +21,26 @@ app.factory('Track', ['$resource', function($resource) {
 
 app.controller('SearchCtrl', ['$scope', '$http', 'Track', function($scope, $http, Track) {
   $scope.tracks = [];
-  $scope.searchGenre = function() {
-    var genre = $scope.genre;
-    var url = 'http://api.soundcloud.com/tracks.json?client_id=CLIENTKEY&q=parks&limit=50';
-  }
+  $scope.genreName = function() {
+    var userSearch = $scope.searchGenre;
+    SC.initialize({
+      client_id: '74f88aa9448b885febbcd31db58eb150'
+    });
+    console.log(userSearch);
+    
+    var url = 'http://api.soundcloud.com/tracks.json?client_id=74f88aa9448b885febbcd31db58eb150&q=' + userSearch + '&limit=20';
+    $http.get(url)
+      .then(function(response) {
+        $scope.userSearch = '';
+        $scope.tracks = response.data;
+        console.log($scope.tracks);
+      },function(error) {
+        console.log(error);
+      });
+  };
+  $scope.play = function(track_url) {
+    console.log(track_url);
+  };
+
 }]);
+
