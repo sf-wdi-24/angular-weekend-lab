@@ -1,0 +1,13 @@
+<div class="row">
+	<div class="col-md-8  col-md-offset-2">
+		<h1 class="page-header">Things you may like</h1>
+		<div ng-repeat="suggestion in suggestions">
+			<p><a href="/suggestion/{{ suggestion.objectId }}">{{ suggestion.name }}</a></p>
+			<p>{{ suggestion.type }}</p>
+			<p>{{ suggestion.wikiDesc }}</p>
+			<p>{{ suggestion.wikiUrl }}</p>
+			<p>{{ suggestion.youtubeUrl }}</p>
+			<hr>
+		</div>
+	</div>
+</div>
