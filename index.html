@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="juntosApp">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="/">
+   
+  <!-- materialize css -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+  <!-- angular -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+
+  <!-- ngRoute -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
+  <!-- ngResource -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-resource.min.js"></script>
+
+  <!-- custom script (angular app) -->
+  <script type="text/javascript" src="app.js"></script>
+
+  <!-- AngularJS -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+  <!-- Firebase -->
+  <script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+
+  <!-- AngularFire -->
+  <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+
+  <!-- custom styles -->
+  <link rel="stylesheet" type="text/css" href="main.css">
+
+  <title>Juntos</title>
+</head>
+<body>
+  <div ng-controller="juntosApp">
+  <div id="main-container" align="center">
+      <div id="logo">
+      <a href="index.html" class="brand-logo"><img src="images/logo.png"></a> 
+      </div>
+    <div class="main-nav" data-content-field="navigation">
+      <ul> 
+        <li class="page-collection">
+          <a href="#/events">Events</a>
+        </li>
+        <li class="page-collection">
+          <a href="#/mentors">Mentors</a>
+        </li>
+        <li class="page-collection">
+          <a href="#/mentees">Mentees</a>
+        </li>      
+      </ul>
+    </div>
+    <div class="info">
+      <p id ="info">We're a community devoted to helping young women in tech become more involved in the tech community.</p>
+    </div>
+    <div class="get-involved">
+      <p class="form-title" align="center">Get Involved!</p>
+        <form class="col s12">
+        <div class="row">
+          <div class="input-field col s6">
+            <input placeholder="First Name" id="first_name" type="text">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text">
+            <label for="last_name">Last Name</label>
+          </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email">
+          <label for="email">Email</label>
+        </div>
+      </div>
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+    </form>
+  </div>
+  </div>
+</div>
+  <div class="container main-container">
+    <div class="row">
+      <div class="col-md-12">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
+</body>
+ <!--Import jQuery before materialize.js-->
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="js/materialize.min.js"></script>
+
+</html>

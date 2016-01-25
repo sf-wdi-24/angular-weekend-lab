@@ -1,0 +1,46 @@
+#logo {
+	margin-top: 40px;
+}
+
+.main-nav {
+	display: inline-block;
+	line-height: 2em;
+	float: left;
+	width: 105%;
+	text-align: center; 
+	padding-bottom: 50px;
+}
+
+.page-collection {
+	display: inline-block;
+	padding-right: 100px;
+	font-size: 30px;
+	text-align: center; 
+}
+
+a {
+	color: #a5199a;
+}
+
+p {
+	font-size: 30px; 
+	color: #a5199a;
+	padding-top: 2px;
+}
+
+.get-involved {
+	width: 50%;  
+}
+
+.btn {
+	background-color: #a5199a; 
+}
+
+#first_name, #last_name, #email {
+	color: #a5199a;
+}
+
+p#info {
+	font-size: 20px; 
+	width: 500px;
+}
