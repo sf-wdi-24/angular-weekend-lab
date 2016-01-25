@@ -1,0 +1,27 @@
+{
+  "name": "angular-weekend-lab",
+  "version": "1.0.0",
+  "description": "![house](https://cloud.githubusercontent.com/assets/7833470/12465814/e9ae781e-bf84-11e5-8de0-6a1d952e5fda.gif)",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alanlee35/angular-weekend-lab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alanlee35/angular-weekend-lab/issues"
+  },
+  "homepage": "https://github.com/alanlee35/angular-weekend-lab#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "dotenv": "^2.0.0",
+    "express": "^4.13.4",
+    "hbs": "^4.0.0",
+    "mongoose": "^4.3.7",
+    // "soundcloud": "^3.1.0"
+  }
+}
