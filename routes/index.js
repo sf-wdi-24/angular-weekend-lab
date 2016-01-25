@@ -29,7 +29,7 @@ var photos = [
 ];
 
 router.get('/random.json', function(req, res, next) {
-	res.json(photos);
+	res.json(photos[Math.floor(Math.random()*photos.length)]);
 });
 
 /* GET home page. */
