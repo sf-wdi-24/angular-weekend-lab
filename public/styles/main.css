@@ -1,5 +1,43 @@
+body {
+	background-image: url('http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/concrete_seamless.png');
+	font-family: 'Underdog', cursive;
+	font-size: 2em;
+}
+
+.buttons {
+	background-color: #B64926;
+	color: #FFF0A5;
+}
+
+.buttons:hover {
+	background-color: #8E2800 !important;
+}
+
 #navbar {
-	background-color: #483919;
+	background-color: #468966;
+}
+
+#navbar a {
+	color: #FFF0A5;
+}
+
+.site-header {
+	color: #468966;
+	font-size: 4em;
+	text-align: center;
+}
+
+.type-group {
+	background-color: #F0D8B5;
+}
+
+.mediaType {
+	background-color: #468966;
+	color: #FFF0A5;
+}
+
+.mediaType a {
+	color: #FFB03B;
 }
 
 .bold {

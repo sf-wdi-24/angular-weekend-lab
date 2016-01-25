@@ -1,12 +1,13 @@
 <div class="row">
-	<div class="col-md-8  col-md-offset-2">
-		<h1 class="page-header">Things you may like</h1>
-		<div ng-repeat="suggestion in suggestions">
-			<p><a href="/suggestion/{{ suggestion.objectId }}">{{ suggestion.name }}</a></p>
-			<p>{{ suggestion.type }}</p>
+	<div class="col-md-8 col-md-offset-2 type-group">
+		<h1 class="page-header site-header">Things you saved</h1>
+		<div class="well mediaType" ng-repeat="suggestion in suggestions">
+			<h2 class="page-header">
+				<a href="/suggestion/{{ suggestion.objectId }}">{{ suggestion.name }}</a>
+				<span class="pull-right">{{ suggestion.type | uppercase }}</span>
+			</h2>
 			<p>{{ suggestion.wikiDesc }}</p>
-			<p>{{ suggestion.wikiUrl }}</p>
-			<p>{{ suggestion.youtubeUrl }}</p>
+			<p><a href="{{ suggestion.wikiUrl }}" target="_blank">See more on Wikipedia</a></p>
 			<hr>
 		</div>
 	</div>
