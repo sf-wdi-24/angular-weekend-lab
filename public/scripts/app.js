@@ -22,7 +22,7 @@ app.config(['$routeProvider', '$locationProvider',
 app.factory("GameData", ["$http", function($http) {
     return {
         query: function() {
-            return $http.get("http://localhost:3000/random.json");
+            return $http.get("https://localhost:3000/random.json");
         }
     };
 }]);
