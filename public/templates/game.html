@@ -1,0 +1,28 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div ng-hide="loaded">
+				Loading...
+			</div>
+			<div ng-show="loaded">
+				<img class="img-responsive" src="{{ gameData.url }}" style="max-height: 370px">
+				<small><a href="{{ gameData.attribution }}">{{ gameData.attribution }}</a>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<leaflet markers="markers" center="center" event-broadcast="events" width="100%" height="370px"></leaflet>
+			
+		</div>
+	</div>
+	<br>
+	<div class="row">
+		<div class="col-md-12">
+			<div ng-hide="gameDone">
+				<button class="btn btn-default btn-lg center-block" ng-click="guess()">Guess!</button>
+			</div>
+			<div ng-show="gameDone">
+				<button ng-click="reload()" class="btn btn-default btn-lg center-block">New game</button>
+			</div>
+		</div>	
+	</div>
+</div>
